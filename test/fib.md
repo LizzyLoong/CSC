@@ -60,4 +60,49 @@ $$ f(n)=f(n-1)+f(n-2) $$
 
  
 
-### rongyao 多方案爬楼梯
+### rongyao 多方案爬楼梯（超级斐波那契数列）
+#### 从爬楼梯的角度描述：
+每次爬楼梯的步数可以为x1，x2,x3……步（xi是整型），xi一共有几个未知，由cin输入   
+已知楼梯共有x阶，求解一共有多少种拼接方法   
+#### 从斐波那切数列角度描述：
+已知存在一个数组int x[n],求解：   
+函数f(x)=f(x-x1)+f(x-x2)+f(x-x3)+……+f(x-xn)   
+其中，x[i]未知，甚至数组有多少个元素都未知，由cin输入
+```
+#include<iostream>
+#include<vector>
+using namespace std;
+int super_fib(int m,vector<int>& x)
+{
+    int n=x.size();
+    vector<int> dp(m+1,0);
+    dp[0]=1;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<=m;j++)
+        {
+            dp[j]+=dp[j-x[i]];
+        }
+    }
+    return dp[m];
+}
+int main()
+{
+    vector<int> x;
+    int a;
+    int num;
+    cin>>a;
+    while(cin>>num)
+    {
+        x.push_back(num);
+    }
+    int ans=super_fib(a,x);
+    cout<<and<<endl;
+}
+```
+
+
+
+
+
+
